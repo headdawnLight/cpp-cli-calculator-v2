@@ -8,9 +8,10 @@
 using namespace std;
 void showMenu();
 void runMenu();
-void ExponentialNumbers();
-void FactorialNumbers();
+void redoMenu();
 void PrimeNumbers();
+void FactorialNumbers();
+void ExponentialNumbers();
 void TheBackgammonDice();
 
 int main() // Works with nested global void functions.
@@ -22,13 +23,13 @@ int main() // Works with nested global void functions.
 void showMenu()
 {
 	cout << "\n-->Hello, World!" << endl << endl;
-	cout << "-->Press \"1\" to calculate exponential numbers!" << endl;
-	cout << "-->Press \"2\" to calculate factorial numbers!" << endl;
-	cout << "-->Press \"3\" to find prime numbers!" << endl;
-	cout << "-->Press \"4\" to roll random backgammon dice!" << endl;
+	cout << "-->Press \"1\" to find prime numbers!" << endl;
+	cout << "-->Press \"2\" to roll random backgammon dice!" << endl;
+	cout << "-->Press \"3\" to calculate factorial numbers!" << endl;
+	cout << "-->Press \"4\" to calculate exponential numbers!" << endl;
 }
 
-void runMenu() // Runs the choice and shows the menu every time.
+void runMenu()
 {
 	showMenu();
 
@@ -44,32 +45,114 @@ void runMenu() // Runs the choice and shows the menu every time.
 		runMenu();
 	}
 
-	if (choice == 1)
-	{
-		ExponentialNumbers();
+	if (choice == 1) 
+	{ 
+		PrimeNumbers();		  
 	}
-	else if (choice == 2)
-	{
-		FactorialNumbers();
+	else if (choice == 2) 
+	{ 
+		TheBackgammonDice();  
 	}
-	else if (choice == 3)
-	{
-		PrimeNumbers();
+	else if (choice == 3) 
+	{ 
+		FactorialNumbers();   
 	}
-	else if (choice == 4)
-	{
-		TheBackgammonDice();
-	}
-	else {
-		runMenu();
+	else if (choice == 4) 
+	{ 
+		ExponentialNumbers(); 
 	}
 }
 
-int CalculateExponents(int bases, int expon)
+void redoMenu()
+{
+	cout << "\n-->Enter the 'M' key to return to the menu or enter the 'E' key to exit: " << flush;
+	char redo;
+	cin >> redo;
+	switch(redo) 
+	{
+		case 'M': case 'm':
+		runMenu();
+		break;
+
+		case 'E': case 'e':
+		cout << "\nThis program was developed by headdawnLight" << endl;
+		break;
+	}
+}
+
+bool PrimeNumber(int control)
+{
+	int i;
+	for (i = 2; i < control; i++)
+	{
+		if (control % i == 0)
+			return false;
+	}
+	return true;
+}
+
+int ListOfPrimeNumbers(int lastValue)
+{
+	int j;
+	for (j = lastValue; j > 2; j--)
+	{
+		if (PrimeNumber(j) == true) 
+		{
+			cout << j << ", ";
+		}
+	}
+	return 2;
+}
+
+void PrimeNumbers()
+{
+	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
+	cout << "---Prime numbers are integers greater than 1 that are" << endl;
+	cout << "---only divisible by itself and 1 without a remainder." << endl;
+
+	int primo;
+
+	cout << "\n-->Enter a integer value for prime number list: ";
+	cin >> primo;
+
+	cout << "\n---List of prime numbers from 1 to " << primo << ": ";
+	cout << ListOfPrimeNumbers(primo) << endl << endl << endl;
+
+	redoMenu();
+}
+
+int CalculateFactors(int factor)
 {
 	int sum = 1;
-	for (int i = 1; i <= expon; i++)
-		sum = sum * bases;
+	for (int i = 1; i <= factor; i++)
+		sum = sum * i;
+	return sum;
+}
+
+void FactorialNumbers()
+{
+	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
+	cout << "---In mathematics, the factorial of a non-negative integer n," << endl;
+	cout << "---denoted by n!, is the product of all positive integers less than or" << endl;
+	cout << "---equal to n: n! = n*(n-1)*(n-2)*(n-3)*...*3*2*1" << endl;
+	cout << "---for example, 5! = 5*4*3*2*1" << endl;
+
+	int facto;
+
+	cout << "\n-->Enter the factorial number: ";
+	cin >> facto;
+
+	cout << "\n---The result of the calculation: "
+		<< CalculateFactors(facto) << endl << endl << endl;
+
+	redoMenu();
+}
+
+int CalculateExponents(int base, int expo)
+{
+	int sum = 1;
+	for (int i = 1; i <= expo; i++)
+		sum = sum * base;
 	return sum;
 }
 
@@ -92,73 +175,7 @@ void ExponentialNumbers()
 	cout << "\n---The result of the calculation: ";
 	cout << CalculateExponents(base, expo) << endl << endl << endl;
 
-	runMenu();
-}
-
-int CalculateFactors(int factor)
-{
-	int sum = 1;
-	for (int i = 1; i <= factor; i++)
-		sum = sum * i;
-	return sum;
-}
-
-void FactorialNumbers()
-{
-	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
-	cout << "---In mathematics, the factorial of a non-negative integer n," << endl;
-	cout << "---denoted by n!, is the product of all positive integers less than or" << endl;
-	cout << "---equal to n: n!=n*(n-1)*(n-2)*(n-3)*...*3*2*1" << endl;
-	cout << "---for example, 5! = 5*4*3*2*1" << endl;
-
-	int facto;
-
-	cout << "\n-->Enter the factoriel number: ";
-	cin >> facto;
-
-	cout << "\n---The result of the calculation: "
-		<< CalculateFactors(facto) << endl << endl << endl;
-
-	runMenu();
-}
-
-bool PrimeNumber(int control)
-{
-	int i;
-	for (i = 2; i < control; i++)
-	{
-		if (control % i == 0)
-			return false;
-	}
-	return true;
-}
-
-int ListOfPrimeNumbers(int lastValue)
-{
-	int j;
-	for (j = 2; j < lastValue; j++)
-	{
-		if (PrimeNumber(j) == true)
-			cout << j << " ";
-	}
-	return j;
-}
-
-void PrimeNumbers()
-{
-	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
-	cout << "---Prime numbers are integers greater than 1 that are" << endl;
-	cout << "---only divisible by itself and 1 without a remainder." << endl;
-
-	int primo;
-
-	cout << "\n-->Enter a integer value for prime number list: ";
-	cin >> primo;
-
-	cout << "\n---List of prime numbers from 1 to " << primo << ": ";
-	cout << ListOfPrimeNumbers(primo) << endl << endl << endl;
-
-	runMenu();
+	redoMenu();
 }
 
 void TheBackgammonDice()
@@ -169,8 +186,7 @@ void TheBackgammonDice()
 		TheBackgammonDice1 = 1 + rand() % 6;
 		TheBackgammonDice2 = 1 + rand() % 6;
 		cout << "First dice: " << TheBackgammonDice1 << endl << endl;
-		cout << "Second dice: " << TheBackgammonDice2 << endl;
+		cout << "Second dice: " << TheBackgammonDice2 << endl << endl;
 	}
-
-	runMenu();
+	redoMenu();
 }
