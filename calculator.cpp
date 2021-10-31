@@ -9,9 +9,10 @@ using namespace std;
 void showMenu();
 void runMenu();
 void redoMenu();
-void PrimeNumbers();
+void ArithmeticNumbers();
 void FactorialNumbers();
 void ExponentialNumbers();
+void PrimeNumbers();
 void TheBackgammonDice();
 
 int main() // Works with nested global void functions.
@@ -23,10 +24,11 @@ int main() // Works with nested global void functions.
 void showMenu()
 {
 	cout << "\n-->Hello, World!" << endl << endl;
-	cout << "-->Press \"1\" to find prime numbers!" << endl;
-	cout << "-->Press \"2\" to roll random backgammon dice!" << endl;
-	cout << "-->Press \"3\" to calculate factorial numbers!" << endl;
-	cout << "-->Press \"4\" to calculate exponential numbers!" << endl;
+	cout << "-->Press \"1\" to calculate arithmetic numbers!" << endl;
+	cout << "-->Press \"2\" to calculate factorial numbers!" << endl;
+	cout << "-->Press \"3\" to calculate exponential numbers!" << endl;
+	cout << "-->Press \"4\" to find prime numbers!" << endl;
+	cout << "-->Press \"5\" to roll random backgammon dice!" << endl;
 }
 
 void runMenu()
@@ -39,27 +41,30 @@ void runMenu()
 	cin >> choice;
 	cout << "\n" << endl;
 
-	if (choice < 1 || choice > 4)
+	if (choice < 1 || choice > 5)
 	{
-		cout << "---An invalid choice! Choose again!" << endl << endl;
-		runMenu();
+		cout << "---An invalid choice! Choose again!" << endl << endl; runMenu();
 	}
 
 	if (choice == 1) 
 	{ 
-		PrimeNumbers();		  
+		ArithmeticNumbers();
 	}
 	else if (choice == 2) 
 	{ 
-		TheBackgammonDice();  
+		FactorialNumbers();
 	}
 	else if (choice == 3) 
 	{ 
-		FactorialNumbers();   
+		ExponentialNumbers();
 	}
 	else if (choice == 4) 
 	{ 
-		ExponentialNumbers(); 
+		PrimeNumbers();
+	}
+	else if (choice == 5) 
+	{ 
+		TheBackgammonDice();
 	}
 }
 
@@ -80,44 +85,52 @@ void redoMenu()
 	}
 }
 
-bool PrimeNumber(int control)
-{
-	int i;
-	for (i = 2; i < control; i++)
-	{
-		if (control % i == 0)
-			return false;
-	}
-	return true;
-}
-
-int ListOfPrimeNumbers(int lastValue)
-{
-	int j;
-	for (j = lastValue; j > 2; j--)
-	{
-		if (PrimeNumber(j) == true) 
-		{
-			cout << j << ", ";
-		}
-	}
-	return 2;
-}
-
-void PrimeNumbers()
+void ArithmeticNumbers()
 {
 	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
-	cout << "---Prime numbers are integers greater than 1 that are" << endl;
-	cout << "---only divisible by itself and 1 without a remainder." << endl;
+	cout << "---Arithmetic is a branch of mathematics that consists of" << endl;
+	cout << "---the study of numbers. The basic arithmetic operations" << endl;
+	cout << "---are addition(+), subtraction(-), multiplication(*) and division(/)." << endl;
 
-	int primo;
+	char op;
+	double num1, num2;
 
-	cout << "\n-->Enter a integer value for prime number list: ";
-	cin >> primo;
+	cout << "\nEnter the first number: ";
+	cin >> num1;
+	cout << "Enter the operator (+) (-) (*) (/) : ";
+	cin >> op;
+	cout << "Enter the second number: ";
+	cin >> num2;
 
-	cout << "\n---List of prime numbers from 1 to " << primo << ": ";
-	cout << ListOfPrimeNumbers(primo) << endl << endl << endl;
+	switch (op) { 	// Addition, subtraction, multiplication and division operations
 
+		case '+':
+		cout << "\nThe result of addition: "
+			<< num1 << '+' << num2 << '=' << (num1 + num2) << endl << endl << endl;
+		break;
+
+		case '-':
+		cout << "\nThe result of subtraction: "
+			<< num1 << '-' << num2 << '=' << (num1 - num2) << endl << endl << endl;
+		break;
+
+		case '*':
+		cout << "\nThe result of multiplication: "
+			<< num1 << '*' << num2 << '=' << (num1 * num2) << endl << endl << endl;
+		break;
+
+		case '/':
+
+		if (num2 != 0.0)
+			cout << "\nThe result of division: "
+			<< num1 << '/' << num2 << '=' << (num1 / num2) << endl << endl << endl;
+		else
+			cout << "\nAn invalid operation" << endl;
+		break;
+
+		default:
+			cout << endl << op << " is an invalid operator" << endl;
+	}
 	redoMenu();
 }
 
@@ -160,9 +173,9 @@ void ExponentialNumbers()
 {
 	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
 	cout << "---Exponentiation is a mathematical operation," << endl;
-	cout << "---written as b³, involving two numbers," << endl;
-	cout << "---the base 'b' and the exponent or power '3'," << endl;
-	cout << "---and pronounced as 'b raised to the power of 3'." << endl;
+	cout << "---written as 2^3(equals 2*2*2=8), involving two numbers," << endl;
+	cout << "---the base '2' and the exponent or power '3'," << endl;
+	cout << "---and pronounced as '2 raised to the power of 3'." << endl;
 
 	int base, expo;
 
@@ -174,6 +187,47 @@ void ExponentialNumbers()
 
 	cout << "\n---The result of the calculation: ";
 	cout << CalculateExponents(base, expo) << endl << endl << endl;
+
+	redoMenu();
+}
+
+bool PrimeNumber(int control)
+{
+	int i;
+	for (i = 2; i < control; i++)
+	{
+		if (control % i == 0)
+			return false;
+	}
+	return true;
+}
+
+int ListOfPrimeNumbers(int lastValue)
+{
+	int j;
+	for (j = lastValue; j > 2; j--)
+	{
+		if (PrimeNumber(j) == true)
+		{
+			cout << j << ", ";
+		}
+	}
+	return 2;
+}
+
+void PrimeNumbers()
+{
+	cout << "\n-->DEFINITION AND EXAMPLE" << endl << endl;
+	cout << "---Prime numbers are integers greater than 1 that are" << endl;
+	cout << "---only divisible by itself and 1 without a remainder." << endl;
+
+	int primo;
+
+	cout << "\n-->Enter a integer value for prime number list: ";
+	cin >> primo;
+
+	cout << "\n---List of prime numbers from 1 to " << primo << ": ";
+	cout << ListOfPrimeNumbers(primo) << endl << endl << endl;
 
 	redoMenu();
 }
