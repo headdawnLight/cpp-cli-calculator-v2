@@ -1,4 +1,4 @@
-# cpp-cli-calculator
+# cpp-cli-calculator-v2
 
 This is a simple calculator program that performs various mathematical operations and runs in a command line interface. It was developed on Microsoft Visual Studio 2019 with the C++ programming language.
 
@@ -53,7 +53,7 @@ Step by step
 
 2. If you choose the number 1, you can calculate simple arithmetic operations.
 
-![2021-10-31_21-21-35](https://user-images.githubusercontent.com/82842186/140261604-1de026e7-ae1e-40a5-822a-2984d5a512f4.png)
+![2021-11-04_10-46-24](https://user-images.githubusercontent.com/82842186/140277109-81274625-d207-4076-b067-618c24c44035.png)
 
 3. If you choose number 2, you can calculate the factorial of a positive integer.
 
@@ -69,7 +69,7 @@ Step by step
 
 6. Finally, if you choose the number 5, the random number generator generates two random numbers from 1 to 6, just like rolling a backgammon dice.
 
-![2021-10-31_21-37-04](https://user-images.githubusercontent.com/82842186/140261717-63aa159f-c8f7-4cb4-9336-eb46b58dd6e6.png)
+![2021-11-04_10-48-43](https://user-images.githubusercontent.com/82842186/140277068-c7feff10-52bf-4896-9f4a-df0c2d5e9a59.png)
 
 ## License
 
