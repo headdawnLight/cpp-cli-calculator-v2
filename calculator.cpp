@@ -95,41 +95,41 @@ void ArithmeticNumbers()
 	char op;
 	double num1, num2;
 
-	cout << "\nEnter the first number: ";
+	cout << "\n-->Enter the first number: ";
 	cin >> num1;
-	cout << "Enter the operator (+) (-) (*) (/) : ";
+	cout << "-->Enter the operator (+) (-) (*) (/) : ";
 	cin >> op;
-	cout << "Enter the second number: ";
+	cout << "-->Enter the second number: ";
 	cin >> num2;
 
 	switch (op) { 	// Addition, subtraction, multiplication and division operations
 
 		case '+':
-		cout << "\nThe result of addition: "
+		cout << "\n---The result of addition: "
 			<< num1 << '+' << num2 << '=' << (num1 + num2) << endl << endl << endl;
 		break;
 
 		case '-':
-		cout << "\nThe result of subtraction: "
+		cout << "\n---The result of subtraction: "
 			<< num1 << '-' << num2 << '=' << (num1 - num2) << endl << endl << endl;
 		break;
 
 		case '*':
-		cout << "\nThe result of multiplication: "
+		cout << "\n---The result of multiplication: "
 			<< num1 << '*' << num2 << '=' << (num1 * num2) << endl << endl << endl;
 		break;
 
 		case '/':
 
 		if (num2 != 0.0)
-			cout << "\nThe result of division: "
+			cout << "\n---The result of division: "
 			<< num1 << '/' << num2 << '=' << (num1 / num2) << endl << endl << endl;
 		else
-			cout << "\nAn invalid operation" << endl;
+			cout << "\n---An invalid operation" << endl;
 		break;
 
 		default:
-			cout << endl << op << " is an invalid operator" << endl;
+			cout << "\n---" << op << " is an invalid operator" << endl;
 	}
 	redoMenu();
 }
@@ -239,8 +239,8 @@ void TheBackgammonDice()
 	{
 		TheBackgammonDice1 = 1 + rand() % 6;
 		TheBackgammonDice2 = 1 + rand() % 6;
-		cout << "First dice: " << TheBackgammonDice1 << endl << endl;
-		cout << "Second dice: " << TheBackgammonDice2 << endl << endl;
+		cout << "---First dice: " << TheBackgammonDice1 << endl << endl;
+		cout << "---Second dice: " << TheBackgammonDice2 << endl << endl;
 	}
 	redoMenu();
 }
